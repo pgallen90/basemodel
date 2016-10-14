@@ -2,9 +2,7 @@ import re
 from sqlalchemy import func
 from sqlalchemy.ext.declarative import declared_attr
 
-# Set up SQLAlchemy
-from flask.ext.sqlalchemy import SQLAlchemy
-db = SQLAlchemy()
+from flaskapp.extensions import db
 
 def to_snake_case(camel_case):    
     s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', camel_case)
@@ -22,4 +20,4 @@ class BaseModelMixin(object):
 
     id =  db.Column(db.Integer, primary_key=True)
     timestamp = db.Column(db.DateTime, default=func.now(), nullable=False)
-    last_modified = db.Column(db.DateTime, onupdate=func.now(), nullable=False)
+    last_modified = db.Column(db.DateTime, default=func.now(), onupdate=func.now(), nullable=False)
