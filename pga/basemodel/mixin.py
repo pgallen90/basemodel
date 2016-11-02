@@ -1,9 +1,7 @@
-import re
 from sqlalchemy import func
-from sqlalchemy.ext.declarative import declared_attr
+from flask_sqlalchemy import SQLAlchemy
 
-from flaskapp.extensions import db
-
+db = SQLAlchemy()
 
 class BaseModelMixin(object):
     id =  db.Column(db.Integer, primary_key=True)

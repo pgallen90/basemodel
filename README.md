@@ -6,26 +6,7 @@ Columns & conventions that should be in every Postgresql SQLAlchemy model. Used 
 
 **Quickstart:** To add id, timestamp, and last modified columns, simply add BaseModelMixin to your model classes.
 
-[The example below modifies Miguel Grinberg's excellent Flask Migrate wrapper.](http://blog.miguelgrinberg.com/post/flask-migrate-alembic-database-migration-wrapper-for-flask)
-
 ```python
-    from flask import Flask
-    from flask.ext.sqlalchemy import SQLAlchemy
-    from flask.ext.script import Manager
-    from flask.ext.migrate import Migrate, MigrateCommand
-    from sqlalchemy import func
-
-    from base_model import BaseModelMixin
-
-    app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
-
-    db = SQLAlchemy(app)
-    migrate = Migrate(app, db)
-
-    manager = Manager(app)
-    manager.add_command('db', MigrateCommand)
-
     class ExampleOldModel(db.Model):
         id = db.Column(db.Integer, primary_key = True)
         timestamp = db.Column(db.DateTime, default=func.now(), nullable=False)
@@ -36,8 +17,4 @@ Columns & conventions that should be in every Postgresql SQLAlchemy model. Used 
 
     class ExampleModelWithMixin(db.Model, BaseModelMixin):
         important_model_data = db.Column(db.Text)
-
-    if __name__ == '__main__':
-        manager.run()
 ```
-

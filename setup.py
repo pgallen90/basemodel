@@ -1,11 +1,14 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
-setup(name='base_model',
-      version='0.2',
+
+setup(name='pga.basemodel',
+      version='0.3',
       description='Columns that should be in every Postgresql SQLAlchemy model. Used as a mixin. Support Postgres only.',
-      url='http://github.com/pgallen90/base_model',
+      url='http://github.com/pgallen90/basemodel',
       author='Patrick Allen',
       author_email='patrickgallen@gmail.com',
       license='MIT',
-      packages=['base_model'],
+      namespace_packages=['pga'],
+      packages=find_packages(),
+      include_package_data=True,
       zip_safe=False)
