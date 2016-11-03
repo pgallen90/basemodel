@@ -4,6 +4,11 @@ Columns & conventions that should be in every Postgresql SQLAlchemy model. Used 
 
 ## Usage:
 
+**Installation:** Use pip
+```bash
+    pip install pga.basemodel
+```
+
 **Quickstart:** To add id, timestamp, and last modified columns, simply add BaseModelMixin to your model classes.
 
 ```python
@@ -14,6 +19,9 @@ Columns & conventions that should be in every Postgresql SQLAlchemy model. Used 
 
         important_model_data = db.Column(db.Text)
 
+
+    # The same model, but using the BaseModelMixin:
+    from pga.basemodel import BaseModelMixin
 
     class ExampleModelWithMixin(db.Model, BaseModelMixin):
         important_model_data = db.Column(db.Text)
